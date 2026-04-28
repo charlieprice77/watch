@@ -5,6 +5,9 @@
 *-backups/
 *_backup*/
 
+# Kicad History
+.history/
+
 # KiCad auto-save
 *.kicad_pcb-bak
 *.kicad_sch-bak
