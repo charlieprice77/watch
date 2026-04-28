@@ -124,6 +124,7 @@ twister-out/
 *.elf
 *.map
 *.lst
+build.log
 
 # West workspace (if repo is a standalone app, not the manifest itself)
 .west/
