@@ -1,0 +1,198 @@
+#KiCad Related files
+# KiCad backup files
+*.bak
+*.bck
+*-backups/
+*_backup*/
+
+# KiCad auto-save
+*.kicad_pcb-bak
+*.kicad_sch-bak
+
+# KiCad project local settings (machine-specific)
+*-local.kicad_pro
+fp-info-cache
+
+# Fabrication outputs (regenerate from source)
+gerbers/
+fab/
+*.gbr
+*.gtl
+*.gbl
+*.gto
+*.gbo
+*.gts
+*.gbs
+*.gko
+*.drl
+*.drl.report
+*.pos
+*.csv
+*.rpt
+*.xml
+
+# 3D renders / exports
+*.step
+*.stp
+*.wrl
+*.stl
+
+# Netlist exports
+*.net
+
+# BOM exports
+*.bom
+*.xlsx
+*.pdf
+
+# Simulation files
+*.raw
+*.cir
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# C Related files
+# Prerequisites
+*.d
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+
+# debug information files
+*.dwo
+
+# Zephyr Related files
+# Build output
+build/
+builds/
+twister-out/
+*.bin
+*.hex
+*.elf
+*.map
+*.lst
+
+# West workspace (if repo is a standalone app, not the manifest itself)
+.west/
+# Zephyr & modules pulled in by west - do not commit these
+zephyr/
+modules/
+bootloader/
+tools/
+mbedtls/
+openthread/
+nrf/
+nrfxlib/
+mcuboot/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+Makefile
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# nRF Connect for VS Code workspace state
+.nrf-connect.json
+ncs/
+
+# Kconfig generated files
+.config
+.config.old
+autoconf.h
+
+# Device tree generated
+zephyr.dts
+zephyr.dts.pre
+
+# Ninja
+.ninja_deps
+.ninja_log
+
+# Segger / JTAG
+*.jlink
+*.jdebug
+*.jflash
+JLinkLog.txt
+JLinkSettings.ini
+
+# nRF Programmer / nrfjprog
+*.zip
+
+# OpenOCD
+openocd.log
+
+# Pytest / Twister
+.pytest_cache/
+testcase.ini
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# CLion / JetBrains
+.idea/
+cmake-build-*/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
