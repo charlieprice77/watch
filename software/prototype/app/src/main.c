@@ -9,12 +9,10 @@
 #include <zephyr/device.h>
 #include <zephyr/drivers/sensor.h>
 
-int main(void)
+int configure_bmi270(const struct device *const dev)
 {
 	printf("Hello World! %s\n", CONFIG_BOARD_TARGET);
 
-	const struct device *const dev = DEVICE_DT_GET_ONE(bosch_bmi270);
-	struct sensor_value acc[3], gyr[3];
 	struct sensor_value full_scale, sampling_freq, oversampling;
 
 	if (!device_is_ready(dev)) {
@@ -65,24 +63,36 @@ int main(void)
 	sensor_attr_set(dev, SENSOR_CHAN_GYRO_XYZ,
 			SENSOR_ATTR_SAMPLING_FREQUENCY,
 			&sampling_freq);
+}
+
+void sample_bmi270(const struct device *const dev, struct sensor_value acc[3], struct sensor_value gyr[3])
+{
+	sensor_sample_fetch(dev);
+
+	sensor_channel_get(dev, SENSOR_CHAN_ACCEL_XYZ, acc);
+	sensor_channel_get(dev, SENSOR_CHAN_GYRO_XYZ, gyr);
+
+	printf("AX: %d.%06d; AY: %d.%06d; AZ: %d.%06d; "
+		   "GX: %d.%06d; GY: %d.%06d; GZ: %d.%06d;\n",
+		   acc[0].val1, acc[0].val2,
+		   acc[1].val1, acc[1].val2,
+		   acc[2].val1, acc[2].val2,
+		   gyr[0].val1, gyr[0].val2,
+		   gyr[1].val1, gyr[1].val2,
+		   gyr[2].val1, gyr[2].val2);
+}
+
+int main(void)
+{
+	const struct device *const bmi270_dev = DEVICE_DT_GET_ONE(bosch_bmi270);
+	configure_bmi270(bmi270_dev);
+
+	struct sensor_value acc[3], gyr[3];
 
 	while (1) {
 		/* 10ms period, 100Hz Sampling frequency */
 		k_sleep(K_MSEC(10));
-
-		sensor_sample_fetch(dev);
-
-		sensor_channel_get(dev, SENSOR_CHAN_ACCEL_XYZ, acc);
-		sensor_channel_get(dev, SENSOR_CHAN_GYRO_XYZ, gyr);
-
-		printf("AX: %d.%06d; AY: %d.%06d; AZ: %d.%06d; "
-		       "GX: %d.%06d; GY: %d.%06d; GZ: %d.%06d;\n",
-		       acc[0].val1, acc[0].val2,
-		       acc[1].val1, acc[1].val2,
-		       acc[2].val1, acc[2].val2,
-		       gyr[0].val1, gyr[0].val2,
-		       gyr[1].val1, gyr[1].val2,
-		       gyr[2].val1, gyr[2].val2);
+		sample_bmi270(bmi270_dev, acc, gyr);
 	}
 	return 0;
 }
